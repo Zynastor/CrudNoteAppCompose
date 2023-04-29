@@ -7,6 +7,7 @@ import com.zynastor.crudnoteappcompose.feature_note.data.repository.NoteReposito
 import com.zynastor.crudnoteappcompose.feature_note.domain.repository.NoteRepository
 import com.zynastor.crudnoteappcompose.feature_note.domain.use_case.AddNote
 import com.zynastor.crudnoteappcompose.feature_note.domain.use_case.DeleteNote
+import com.zynastor.crudnoteappcompose.feature_note.domain.use_case.GetNote
 import com.zynastor.crudnoteappcompose.feature_note.domain.use_case.GetNotes
 import com.zynastor.crudnoteappcompose.feature_note.domain.use_case.NoteUseCases
 import dagger.Module
@@ -36,7 +37,9 @@ object AppModule {
     fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotes = GetNotes(repository),
-            deleteNote = DeleteNote(repository), addNote = AddNote(repository)
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 }
